@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumir JSON</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Consumir JSON</h1>
+    <button onclick="fetchData()">Obtener Data</button>
+    <div id="data"></div>
+
+    <script>
+        function fetchData() {
+            fetch('http://localhost:3000/data')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('data').textContent = data.message;
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        }
+    </script>
+</body>
+
+</html>
